@@ -11,12 +11,12 @@
 proxy-providers:
   provider1:
     type: http
-    url: "url"  # 填入订阅链接
+    url: https://doata.net/link/QIkYwHsZ0OUCnSRZ?clash=1  # 填入订阅链接
     interval: 3600  # 订阅更新间隔，单位：秒
     path: ./proxy_provider/provider1.yaml
     proxy: DIRECT  # 下载订阅时使用的策略
     # 在 Provider 层统一排除公告、流量、到期等非节点条目，避免各策略组重复配置
-    filter: "^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic|GB|Expire)).*$"
+    filter: "^(?!.*(试用|印尼|法国|菲律宾|印度|泰国|英国|德国|加拿大|澳大利亚|巴基斯坦|智利|尼日利亚|意大利|马来西亚|土耳其|巴西|阿根廷|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic|GB|Expire)).*$"
     header:  # 可选：自定义 HTTP 请求头
     health-check:
       enable: true
