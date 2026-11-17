@@ -8,27 +8,6 @@
 # ==================== 代理提供者 Proxy Providers ====================
 # provider1 用于加载机场订阅；多订阅用户可复制并依次命名为 provider2、provider3……
 # 新增 Provider 后，还需将其加入相关策略组的 use 列表。
-proxy-providers:
-  provider1:
-    type: http
-    url: https://doata.net/link/QIkYwHsZ0OUCnSRZ?clash=1  # 填入订阅链接
-    interval: 3600  # 订阅更新间隔，单位：秒
-    path: ./proxy_provider/provider1.yaml
-    proxy: DIRECT  # 下载订阅时使用的策略
-    # 在 Provider 层统一排除公告、流量、到期等非节点条目，避免各策略组重复配置
-    filter: "^(?!.*(试用|印尼|法国|菲律宾|印度|泰国|英国|德国|加拿大|澳大利亚|巴基斯坦|智利|尼日利亚|意大利|马来西亚|土耳其|巴西|阿根廷|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic|GB|Expire)).*$"
-    header:  # 可选：自定义 HTTP 请求头
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    override:
-      udp: true
-      # 不建议默认跳过 TLS 证书校验；仅在明确需要兼容特定节点时启用
-      # skip-cert-verify: true
-      # additional-prefix: "[provider1]"
-      # additional-suffix: "test"
-
 # ==================== 代理策略组 Proxy Groups ====================
 # 策略组候选项和节点注入逻辑与当前 Custom_Clash.ini 保持一致。
 proxy-groups:
@@ -60,8 +39,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "💬 即时通讯"
     type: select
@@ -92,8 +69,6 @@ proxy-groups:
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
       - "🎯 全球直连"
-    use:
-      - provider1
 
   - name: "🚀 GitHub"
     type: select
@@ -123,8 +98,6 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🤖 AI服务"
     type: select
@@ -139,8 +112,6 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🎶 TikTok"
     type: select
@@ -155,8 +126,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "📹 YouTube"
     type: select
@@ -171,8 +140,6 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🎥 Netflix"
     type: select
@@ -187,8 +154,6 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🎥 DisneyPlus"
     type: select
@@ -203,8 +168,6 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🎥 HBO"
     type: select
@@ -219,8 +182,7 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
+
 
   - name: "🎥 PrimeVideo"
     type: select
@@ -235,8 +197,7 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
+
 
   - name: "🎥 AppleTV+"
     type: select
@@ -252,8 +213,7 @@ proxy-groups:
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
       - "🎯 全球直连"
-    use:
-      - provider1
+
 
   - name: "🎥 Emby"
     type: select
@@ -269,8 +229,7 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
+
 
   - name: "🎻 Spotify"
     type: select
@@ -286,8 +245,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "📺 Bahamut"
     type: select
@@ -298,8 +255,6 @@ proxy-groups:
       - "🇭🇰 香港节点"
       - "🚀 手动选择"
       - "🎯 全球直连"
-    use:
-      - provider1
 
   - name: "🌎 国外媒体"
     type: select
@@ -314,8 +269,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🛒 国外电商"
     type: select
@@ -331,8 +284,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "📢 谷歌FCM"
     type: select
@@ -362,8 +313,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🍎 苹果服务"
     type: select
@@ -379,8 +328,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "Ⓜ️ 微软服务"
     type: select
@@ -396,8 +343,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🎮 游戏平台"
     type: select
@@ -413,8 +358,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🎮 Steam"
     type: select
@@ -430,8 +373,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🚀 测速工具"
     type: select
@@ -447,8 +388,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🐟 漏网之鱼"
     type: select
@@ -464,8 +403,6 @@ proxy-groups:
       - "🇸🇬 新加坡节点"
       - "🇼🇸 台湾节点"
       - "🇰🇷 韩国节点"
-    use:
-      - provider1
 
   - name: "🔀 非标端口"
     type: select
@@ -480,8 +417,6 @@ proxy-groups:
     type: url-test
     url: https://www.gstatic.com/generate_204
     filter: '(?i)(🇭🇰|港|\bHK(?:[-_ ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|hk|Hong Kong|HongKong|hongkong|HONG KONG|HONGKONG|深港|HKG|九龙|Kowloon|新界|沙田|荃湾|葵涌)'
-    use:
-      - provider1
     interval: 300
     tolerance: 50
 
@@ -489,8 +424,6 @@ proxy-groups:
     type: url-test
     url: https://www.gstatic.com/generate_204
     filter: '(?i)(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|纽约|纽纽|亚特兰大|迈阿密|华盛顿|\bUS(?:[-_ ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|United States|UnitedStates|UNITED STATES|USA|America|AMERICA|JFK|EWR|IAD|ATL|ORD|MIA|NYC|LAX|SFO|SEA|DFW|SJC)'
-    use:
-      - provider1
     interval: 300
     tolerance: 50
 
@@ -498,8 +431,6 @@ proxy-groups:
     type: url-test
     url: https://www.gstatic.com/generate_204
     filter: '(?i)(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|(?<!尼|-)日|\bJP(?:[-_ ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|Japan|JAPAN|JPN|NRT|HND|KIX|TYO|OSA|关西|Kansai|KANSAI)'
-    use:
-      - provider1
     interval: 300
     tolerance: 50
 
@@ -507,8 +438,6 @@ proxy-groups:
     type: url-test
     url: https://www.gstatic.com/generate_204
     filter: '(?i)(🇸🇬|新加坡|坡|狮城|\bSG(?:[-_ ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|Singapore|SINGAPORE|SIN)'
-    use:
-      - provider1
     interval: 300
     tolerance: 50
 
@@ -516,8 +445,6 @@ proxy-groups:
     type: url-test
     url: https://www.gstatic.com/generate_204
     filter: '(?i)(🇹🇼|🇼🇸|台|新北|彰化|\bTW(?:[-_ ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|Taiwan|TAIWAN|TWN|TPE|ROC)'
-    use:
-      - provider1
     interval: 300
     tolerance: 50
 
@@ -525,8 +452,6 @@ proxy-groups:
     type: url-test
     url: https://www.gstatic.com/generate_204
     filter: '(?i)(🇰🇷|\bKR(?:[-_ ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|Korea|KOREA|KOR|首尔|韩|韓|春川|Chuncheon|ICN)'
-    use:
-      - provider1
     interval: 300
     tolerance: 50
 
